@@ -27,9 +27,9 @@ export default {
           },
         })
         .then((resp) => {
-          this.store.searchWord = resp;
-          console.log(this.store.searchWord);
+          this.store.tvArray = resp.data.results;
         });
+      console.log(this.store.tvArray);
     },
   },
   created() {},
