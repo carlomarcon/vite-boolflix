@@ -11,10 +11,18 @@ export default {
     appBody,
     appFooter,
   },
+  data() {
+    return {
+      store,
+    };
+  },
+  created() {},
 };
 </script>
 
-<template></template>
+<template>
+  <appHeader />
+</template>
 
 <style lang="scss">
 @use "./style/general.scss";
