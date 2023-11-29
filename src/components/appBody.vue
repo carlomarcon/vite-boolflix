@@ -9,6 +9,9 @@ export default {
       store,
     };
   },
+  methods: {
+    console: function () {},
+  },
 };
 </script>
 <template>
@@ -16,9 +19,12 @@ export default {
     <div class="container">
       <div class="col">
         <AppCard
+          :rend="this.store.check"
           v-if="store.tvArray.length > 0"
-          v-for="element in this.store.tvArray"
+          v-for="(element, index) in this.store.tvArray"
           :list="element"
+          @mouseover="console"
+          @mouseleave=""
         />
       </div>
     </div>
@@ -28,12 +34,18 @@ export default {
 .wrapper {
   height: 60vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .container {
+    width: 80%;
+  }
 
   .col {
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     background-color: grey;
   }

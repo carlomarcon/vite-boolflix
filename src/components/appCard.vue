@@ -13,7 +13,9 @@ export default {
       :src="'https://image.tmdb.org/t/p/original' + list.poster_path"
       alt=""
     />
+
     <!-- <h3>{{ list.title }}</h3> -->
+
     <img
       v-if="list.original_language === 'it'"
       src="https://static-00.iconduck.com/assets.00/flag-italy-emoji-2048x1279-lgfb3r16.png"
@@ -58,22 +60,27 @@ export default {
       class="flag"
       alt=""
     />
-    <h3>{{ list.original_language }}</h3>
+    <!-- <h3>{{ list.original_language }}</h3> -->
   </div>
 </template>
 <style lang="scss" scoped>
 .card {
   height: 14rem;
-  width: calc(100% / 6);
+  width: calc(100% / 5);
+  display: flex;
+  position: relative;
 
   img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
   }
 
   .flag {
     width: 100px;
     height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 }
 </style>
