@@ -5,4 +5,5 @@ export const store = reactive({
   tvArray: [],
   tvseriesArray: [],
   check: true,
+  apiKey: "aa5ccfcf40fb7a80f5939089e1480013",
 });

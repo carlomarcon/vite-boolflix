@@ -38,7 +38,7 @@ export default {
 </template>
 <style scoped lang="scss">
 .wrapper {
-  height: 60vh;
+  height: 80vh;
   width: 100%;
   display: flex;
   justify-content: center;

@@ -19,24 +19,21 @@ export default {
   },
   methods: {
     findIt: function () {
+      const paramsAxios = {
+        params: {
+          api_key: this.store.apiKey,
+          query: this.store.searchWord,
+        },
+      };
+
       axios
-        .get("https://api.themoviedb.org/3/search/movie", {
-          params: {
-            api_key: "aa5ccfcf40fb7a80f5939089e1480013",
-            query: this.store.searchWord,
-          },
-        })
+        .get("https://api.themoviedb.org/3/search/movie", paramsAxios)
         .then((resp) => {
           this.store.tvArray = resp.data.results;
         });
       console.log(this.store.tvArray);
       axios
-        .get("https://api.themoviedb.org/3/search/tv", {
-          params: {
-            api_key: "aa5ccfcf40fb7a80f5939089e1480013",
-            query: this.store.searchWord,
-          },
-        })
+        .get("https://api.themoviedb.org/3/search/tv", paramsAxios)
         .then((resp) => {
           this.store.tvseriesArray = resp.data.results;
         });
@@ -48,7 +45,7 @@ export default {
 </script>
 
 <template>
-  <appHeader @generate="findIt" />
+  <appHeader @generate="findIt" @keyup.enter="findIt" />
   <appBody />
 </template>
 

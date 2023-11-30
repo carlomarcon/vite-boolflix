@@ -9,7 +9,7 @@ export default {
 
   methods: {
     score: function (number) {
-      return Math.floor(number / 2 + 0.5);
+      return Math.floor(number / 2 + 1);
     },
   },
 };
@@ -23,9 +23,6 @@ export default {
     />
 
     <div class="description">
-      <h2 v-if="check === true">Title: {{ list.title }}</h2>
-      <h2 v-else>Overview: {{ list.overview }}</h2>
-      <p>{{ score(list.vote_average) }}</p>
       <i
         :class="{
           'fa-regular fa-star': score(list.vote_average) < 1,
@@ -56,8 +53,16 @@ export default {
           'fa-solid fa-star': score(list.vote_average) >= 5,
         }"
       ></i>
-
-      <h4>Language: {{ list.original_language }}</h4>
+      <div class="overflow">
+        <div v-if="check === true">
+          <h2>{{ list.title }}</h2>
+          <p>{{ list.overview }}</p>
+        </div>
+        <div v-else>
+          <h2>{{ list.name }}</h2>
+          <p>{{ list.overview }}</p>
+        </div>
+      </div>
     </div>
 
     <!-- <h3>{{ list.title }}</h3> -->
@@ -112,28 +117,46 @@ export default {
 <style lang="scss" scoped>
 .card {
   height: 14rem;
-  width: calc(100% / 5);
+  width: calc(100% / 4);
   display: flex;
   position: relative;
 
   &:hover {
     .cover {
-      display: none;
+      z-index: 0;
+      filter: brightness(30%);
     }
     .flag {
       display: none;
     }
 
     .description {
-      z-index: 0;
+      text-align: center;
+      z-index: 1;
 
       .fa-solid.fa-star {
       }
+
+      i {
+        color: white;
+        height: 20px;
+        width: 20px;
+        margin: 10px 0;
+      }
     }
   }
+
   .description {
     z-index: -1;
     position: absolute;
+
+    .overflow {
+      font-size: 1rem;
+      height: 150px;
+      width: 100%;
+      color: white;
+      overflow-y: auto;
+    }
   }
 
   img {
