@@ -21,6 +21,7 @@ export default {
           v-if="store.tvArray.length > 0"
           v-for="(element, index) in this.store.tvArray"
           :list="element"
+          :check="true"
         />
       </div>
       <h1>Series Tv</h1>
@@ -29,6 +30,7 @@ export default {
           v-if="store.tvArray.length > 0"
           v-for="(element, index) in this.store.tvseriesArray"
           :list="element"
+          :check="false"
         />
       </div>
     </div>

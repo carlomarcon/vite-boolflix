@@ -48,7 +48,6 @@ export default {
 </script>
 
 <template>
-  <i class="fa-solid fa-house"></i>
   <appHeader @generate="findIt" />
   <appBody />
 </template>

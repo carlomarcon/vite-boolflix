@@ -4,6 +4,7 @@ import { store } from "./store";
 export default {
   props: {
     list: Object,
+    check: Boolean,
   },
 
   methods: {
@@ -22,7 +23,8 @@ export default {
     />
 
     <div class="description">
-      <h2>Title: {{ list.title }}</h2>
+      <h2 v-if="check === true">Title: {{ list.title }}</h2>
+      <h2 v-else>Overview: {{ list.overview }}</h2>
       <p>{{ score(list.vote_average) }}</p>
       <i
         :class="{

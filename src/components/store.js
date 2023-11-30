@@ -4,4 +4,5 @@ export const store = reactive({
   searchWord: "",
   tvArray: [],
   tvseriesArray: [],
+  check: true,
 });
