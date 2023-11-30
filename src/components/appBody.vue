@@ -9,22 +9,26 @@ export default {
       store,
     };
   },
-  methods: {
-    console: function () {},
-  },
+  methods: {},
 };
 </script>
 <template>
   <div class="wrapper">
     <div class="container">
+      <h1>Movies</h1>
       <div class="col">
         <AppCard
-          :rend="this.store.check"
           v-if="store.tvArray.length > 0"
           v-for="(element, index) in this.store.tvArray"
           :list="element"
-          @mouseover="console"
-          @mouseleave=""
+        />
+      </div>
+      <h1>Series Tv</h1>
+      <div class="col">
+        <AppCard
+          v-if="store.tvArray.length > 0"
+          v-for="(element, index) in this.store.tvseriesArray"
+          :list="element"
         />
       </div>
     </div>
@@ -48,6 +52,7 @@ export default {
     justify-content: space-around;
     flex-wrap: wrap;
     background-color: grey;
+    overflow-y: scroll;
   }
 }
 </style>

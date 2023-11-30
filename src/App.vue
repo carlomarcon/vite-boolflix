@@ -30,6 +30,17 @@ export default {
           this.store.tvArray = resp.data.results;
         });
       console.log(this.store.tvArray);
+      axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+          params: {
+            api_key: "aa5ccfcf40fb7a80f5939089e1480013",
+            query: this.store.searchWord,
+          },
+        })
+        .then((resp) => {
+          this.store.tvseriesArray = resp.data.results;
+        });
+      console.log(this.store.tvseriesArray, this.store.tvArray);
     },
   },
   created() {},
@@ -37,10 +48,12 @@ export default {
 </script>
 
 <template>
+  <i class="fa-solid fa-house"></i>
   <appHeader @generate="findIt" />
   <appBody />
 </template>
 
 <style lang="scss">
 @use "./style/general.scss";
+@import "@fortawesome/fontawesome-free/css/all.css";
 </style>

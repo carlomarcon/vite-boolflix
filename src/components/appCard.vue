@@ -5,6 +5,12 @@ export default {
   props: {
     list: Object,
   },
+
+  methods: {
+    score: function (number) {
+      return Math.floor(number / 2 + 0.5);
+    },
+  },
 };
 </script>
 <template>
@@ -12,7 +18,45 @@ export default {
     <img
       :src="'https://image.tmdb.org/t/p/original' + list.poster_path"
       alt=""
+      class="cover"
     />
+
+    <div class="description">
+      <h2>Title: {{ list.title }}</h2>
+      <p>{{ score(list.vote_average) }}</p>
+      <i
+        :class="{
+          'fa-regular fa-star': score(list.vote_average) < 1,
+          'fa-solid fa-star': score(list.vote_average) >= 1,
+        }"
+      ></i>
+      <i
+        :class="{
+          'fa-regular fa-star': score(list.vote_average) < 2,
+          'fa-solid fa-star': score(list.vote_average) >= 2,
+        }"
+      ></i>
+      <i
+        :class="{
+          'fa-regular fa-star': score(list.vote_average) < 3,
+          'fa-solid fa-star': score(list.vote_average) >= 3,
+        }"
+      ></i>
+      <i
+        :class="{
+          'fa-regular fa-star': score(list.vote_average) < 4,
+          'fa-solid fa-star': score(list.vote_average) >= 4,
+        }"
+      ></i>
+      <i
+        :class="{
+          'fa-regular fa-star': score(list.vote_average) < 5,
+          'fa-solid fa-star': score(list.vote_average) >= 5,
+        }"
+      ></i>
+
+      <h4>Language: {{ list.original_language }}</h4>
+    </div>
 
     <!-- <h3>{{ list.title }}</h3> -->
 
@@ -70,6 +114,26 @@ export default {
   display: flex;
   position: relative;
 
+  &:hover {
+    .cover {
+      display: none;
+    }
+    .flag {
+      display: none;
+    }
+
+    .description {
+      z-index: 0;
+
+      .fa-solid.fa-star {
+      }
+    }
+  }
+  .description {
+    z-index: -1;
+    position: absolute;
+  }
+
   img {
     width: 100%;
     height: 100%;
@@ -81,6 +145,11 @@ export default {
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+
+  h2,
+  h4 {
+    z-index: -1;
   }
 }
 </style>
