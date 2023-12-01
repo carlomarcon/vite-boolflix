@@ -40,7 +40,30 @@ export default {
       console.log(this.store.tvseriesArray, this.store.tvArray);
     },
   },
-  created() {},
+
+  created() {
+    axios
+      .get("https://api.themoviedb.org/3/search/movie", {
+        params: {
+          api_key: this.store.apiKey,
+          query: "marvel",
+        },
+      })
+      .then((resp) => {
+        this.store.tvArray = resp.data.results;
+      });
+
+    axios
+      .get("https://api.themoviedb.org/3/search/tv", {
+        params: {
+          api_key: this.store.apiKey,
+          query: "marvel",
+        },
+      })
+      .then((resp) => {
+        this.store.tvseriesArray = resp.data.results;
+      });
+  },
 };
 </script>
 

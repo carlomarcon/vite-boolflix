@@ -24,35 +24,13 @@ export default {
 
     <div class="description">
       <i
+        v-for="num in 5"
         :class="{
-          'fa-regular fa-star': score(list.vote_average) < 1,
-          'fa-solid fa-star': score(list.vote_average) >= 1,
+          'fa-regular fa-star': score(list.vote_average) < num,
+          'fa-solid fa-star': score(list.vote_average) >= num,
         }"
       ></i>
-      <i
-        :class="{
-          'fa-regular fa-star': score(list.vote_average) < 2,
-          'fa-solid fa-star': score(list.vote_average) >= 2,
-        }"
-      ></i>
-      <i
-        :class="{
-          'fa-regular fa-star': score(list.vote_average) < 3,
-          'fa-solid fa-star': score(list.vote_average) >= 3,
-        }"
-      ></i>
-      <i
-        :class="{
-          'fa-regular fa-star': score(list.vote_average) < 4,
-          'fa-solid fa-star': score(list.vote_average) >= 4,
-        }"
-      ></i>
-      <i
-        :class="{
-          'fa-regular fa-star': score(list.vote_average) < 5,
-          'fa-solid fa-star': score(list.vote_average) >= 5,
-        }"
-      ></i>
+
       <div class="overflow">
         <div v-if="check === true">
           <h2>{{ list.title }}</h2>
@@ -116,7 +94,7 @@ export default {
 </template>
 <style lang="scss" scoped>
 .card {
-  height: 14rem;
+  height: 20rem;
   width: calc(100% / 4);
   display: flex;
   position: relative;

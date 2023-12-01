@@ -15,7 +15,10 @@ export default {
 <template>
   <div class="wrapper">
     <div class="container">
-      <h1>Movies</h1>
+      <div class="filter">
+        <h1>Movies</h1>
+        <p>Risultati filtrati : {{ store.tvArray.length }}</p>
+      </div>
       <div class="col">
         <AppCard
           v-if="store.tvArray.length > 0"
@@ -24,7 +27,10 @@ export default {
           :check="true"
         />
       </div>
-      <h1>Series Tv</h1>
+      <div class="filter">
+        <h1>Series Tv</h1>
+        <p>Risultati filtrati : {{ store.tvseriesArray.length }}</p>
+      </div>
       <div class="col">
         <AppCard
           v-if="store.tvArray.length > 0"
@@ -42,19 +48,25 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
+  padding: 0 10rem;
 
   .container {
-    width: 80%;
+    width: 100%;
+    color: white;
+
+    .filter {
+      margin: 1rem 0;
+    }
   }
 
   .col {
-    height: 100%;
+    height: 90%;
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    background-color: grey;
-    overflow-y: scroll;
+    overflow-x: scroll;
+    border: 3px solid grey;
   }
 }
 </style>
