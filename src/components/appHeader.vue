@@ -10,12 +10,22 @@ export default {
   },
   methods: {
     search: function () {},
+    reset: function () {
+      location.reload;
+    },
   },
 };
 </script>
 <template>
   <header>
     <h1>BOOLFIX</h1>
+    <ul>
+      <li>
+        <a href="" @click="reset"><i class="fa-solid fa-house"></i></a>
+      </li>
+      <li>MOVIES</li>
+      <li>TV SERIES</li>
+    </ul>
     <div>
       <input type="text" v-model.trim="store.searchWord" />
       <button @click="$emit('generate')">
@@ -33,6 +43,24 @@ header {
   width: 100%;
   background-color: black;
   padding: 0 10rem;
+
+  ul {
+    text-align: left;
+    width: 60%;
+
+    a {
+      color: white;
+
+      // &:hover {
+      //   text-decoration: underline;
+      // }
+    }
+    li {
+      color: white;
+      display: inline-block;
+      margin: 10px;
+    }
+  }
 
   h1 {
     color: red;

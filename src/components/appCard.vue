@@ -5,23 +5,35 @@ export default {
   props: {
     list: Object,
     check: Boolean,
+    listType: Array,
   },
 
   methods: {
     score: function (number) {
       return Math.floor(number / 2 + 1);
     },
+    console: function () {
+      console.log(this.listType.length);
+    },
   },
 };
 </script>
 <template>
-  <div class="card">
+  <div
+    class="card"
+    :class="{
+      cardNormal: listType.length > 8,
+      cardSmall: listType.length < 8,
+    }"
+    @click="console"
+  >
     <img
       :src="'https://image.tmdb.org/t/p/original' + list.poster_path"
       alt=""
       class="cover"
+      v-if="list.poster_path !== null"
     />
-
+    <h1 v-else>Image not found</h1>
     <div class="description">
       <i
         v-for="num in 5"
@@ -93,11 +105,25 @@ export default {
   </div>
 </template>
 <style lang="scss" scoped>
-.card {
-  height: 20rem;
+.cardSmall {
+  width: calc(100% / 3);
+  height: 22rem;
+}
+
+.cardNormal {
   width: calc(100% / 4);
+  height: 20rem;
+}
+.card {
   display: flex;
   position: relative;
+
+  h1 {
+    position: absolute;
+    top: 65%;
+    border: 1px dotted grey;
+    z-index: 0;
+  }
 
   &:hover {
     .cover {
