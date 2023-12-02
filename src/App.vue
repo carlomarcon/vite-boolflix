@@ -25,18 +25,21 @@ export default {
           query: this.store.searchWord,
         },
       };
-
-      axios
-        .get("https://api.themoviedb.org/3/search/movie", paramsAxios)
-        .then((resp) => {
-          this.store.tvArray = resp.data.results;
-        });
-      console.log(this.store.tvArray);
-      axios
-        .get("https://api.themoviedb.org/3/search/tv", paramsAxios)
-        .then((resp) => {
-          this.store.tvseriesArray = resp.data.results;
-        });
+      if (this.store.searchWord !== "") {
+        axios
+          .get("https://api.themoviedb.org/3/search/movie", paramsAxios)
+          .then((resp) => {
+            this.store.tvArray = resp.data.results;
+          });
+        console.log(this.store.tvArray);
+        axios
+          .get("https://api.themoviedb.org/3/search/tv", paramsAxios)
+          .then((resp) => {
+            this.store.tvseriesArray = resp.data.results;
+          });
+      } else {
+        location.reload();
+      }
       console.log(this.store.tvseriesArray, this.store.tvArray);
     },
   },
