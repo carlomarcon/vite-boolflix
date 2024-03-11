@@ -21,7 +21,7 @@ export default {
 </script>
 <template>
   <header>
-    <div class="d-flex">
+    <div class="d-flex p-5">
       <h1>BOOLFIX</h1>
       <ul>
         <li>
@@ -46,7 +46,7 @@ export default {
       </ul>
     </div>
 
-    <div>
+    <div class="pe-5">
       <input type="text" v-model.trim="store.searchWord" />
       <button @click="$emit('generate')">
         Cerca<i class="fa-solid fa-magnifying-glass"></i>
