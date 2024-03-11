@@ -15,10 +15,18 @@ export default {
   data() {
     return {
       store,
+      tvArray: [],
     };
   },
   methods: {
     getIt() {
+      const paramsAxios = {
+        params: {
+          api_key: this.store.apiKey,
+          with_genres: this.store.genreAll,
+        },
+      };
+
       for (let i = 0; i < this.store.genreMovieObj.length; i++) {
         if (this.store.genreMovieObj[i].name === this.store.genreAll) {
           // this.store.genreId.push(this.store.genreMovieObj[i].id);
@@ -30,7 +38,29 @@ export default {
         // console.log(this.store.genreId);
       }
 
-      console.log(this.store.genreId);
+      // console
+      //   .log
+      //   // this.store.genreId,
+      //   // this.store.genreMovieObj,
+      //   // this.store.genreAll
+      //   ();
+
+      if (this.store.genreAll !== "Selezionare:") {
+        axios
+          .get("https://api.themoviedb.org/3/discover/movie", paramsAxios)
+          .then((resp) => {
+            this.store.tvArray = resp.data.results;
+
+            axios
+              .get("https://api.themoviedb.org/3/discover/tv", paramsAxios)
+              .then((resp) => {
+                this.store.tvseriesArray = resp.data.results;
+                console.log(this.store.genreAll);
+              });
+          });
+      } else {
+        location.reload();
+      }
     },
 
     findIt: function () {

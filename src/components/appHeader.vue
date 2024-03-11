@@ -29,6 +29,7 @@ export default {
         </li>
         <li>
           <select
+            class="types"
             name=""
             id=""
             @change="onchange()"
@@ -36,7 +37,7 @@ export default {
           >
             <option value="Selezionare:">All</option>
             <option
-              :value="element.name"
+              :value="element.id"
               v-for="element in this.store.genreMovieObj"
             >
               {{ element.name }}
@@ -102,5 +103,9 @@ header {
     outline: none;
     border: 2px solid grey;
   }
+}
+
+.types {
+  outline-style: none;
 }
 </style>
