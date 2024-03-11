@@ -112,7 +112,7 @@ export default {
 
 .cardNormal {
   width: calc(100% / 4);
-  height: 20rem;
+  height: 25rem;
 }
 .card {
   display: flex;

@@ -18,6 +18,21 @@ export default {
     };
   },
   methods: {
+    getIt() {
+      for (let i = 0; i < this.store.genreMovieObj.length; i++) {
+        if (this.store.genreMovieObj[i].name === this.store.genreAll) {
+          // this.store.genreId.push(this.store.genreMovieObj[i].id);
+          this.store.genreId = this.store.genreMovieObj[i].id;
+        }
+        // if (this.store.tvArray[i].id === this.store.genreId) {
+        //   this.store.tvArray = this.store.tvArray[i];
+        // }
+        // console.log(this.store.genreId);
+      }
+
+      console.log(this.store.genreId);
+    },
+
     findIt: function () {
       const paramsAxios = {
         params: {
@@ -25,6 +40,7 @@ export default {
           query: this.store.searchWord,
         },
       };
+
       if (this.store.searchWord !== "") {
         axios
           .get("https://api.themoviedb.org/3/search/movie", paramsAxios)
@@ -41,10 +57,21 @@ export default {
         location.reload();
       }
       console.log(this.store.tvseriesArray, this.store.tvArray);
+      console.log(this.store.tvArray[0].id);
     },
   },
 
   created() {
+    axios
+      .get("https://api.themoviedb.org/3/genre/movie/list", {
+        params: { api_key: this.store.apiKey },
+      })
+      .then((resp) => {
+        this.store.genreMovieObj = resp.data.genres;
+      });
+
+    console.log(this.store.genreMovieObj);
+
     axios
       .get("https://api.themoviedb.org/3/search/movie", {
         params: {
@@ -71,7 +98,7 @@ export default {
 </script>
 
 <template>
-  <appHeader @generate="findIt" @keyup.enter="findIt" />
+  <appHeader @generate="findIt" @keyup.enter="findIt" @genre="getIt" />
   <appBody />
 </template>
 

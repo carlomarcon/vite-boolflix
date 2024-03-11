@@ -13,8 +13,8 @@ export default {
 };
 </script>
 <template>
-  <div class="wrapper">
-    <div class="container">
+  <div class="wrapper gap-3">
+    <div class="container w-100 p-5">
       <div class="filter">
         <h1>Movies</h1>
         <p v-if="store.tvArray.length > 0">
@@ -31,6 +31,9 @@ export default {
           :listType="this.store.tvArray"
         />
       </div>
+    </div>
+
+    <div class="container ms_series w-100 h-50 p-5">
       <div class="filter">
         <h1>Series Tv</h1>
         <p v-if="store.tvseriesArray.length === 0">Nessun risultato trovato</p>
@@ -52,14 +55,13 @@ export default {
 </template>
 <style scoped lang="scss">
 .wrapper {
-  height: 80vh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   padding: 0 10rem;
+  background-color: black;
 
   .container {
-    width: 100%;
     color: white;
 
     .filter {
@@ -68,7 +70,7 @@ export default {
   }
 
   .col {
-    height: 90%;
+    height: 800px;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -76,5 +78,8 @@ export default {
     overflow-x: scroll;
     border: 3px solid grey;
   }
+}
+.ms_series {
+  background-color: black;
 }
 </style>
